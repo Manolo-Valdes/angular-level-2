@@ -1,0 +1,18 @@
+<h1>Step 2: Select your config and options</h1>
+<div *ngIf="currentCfg">
+    <label>Config:</label>
+    <select id="configSelect" name="configSelect" [(ngModel)]="selectedConfig">
+        <option  *ngFor="let cfg of currentOpt?.configs" [value]="cfg.id">{{cfg.description}}</option>
+    </select>
+    <div *ngIf="selectedConfig!==0 ">
+        <p>Range: {{currentCfg()?.range}} miles - Max speed: {{currentCfg()?.speed}} - Price: {{currentCfg()?.price}} </p>
+    </div>
+    <div>
+        <label>towHitch</label>
+        <input id="includeTow" disabled readonly type="checkbox" [ngModel]="currentOpt?.towHitch" />
+    </div>
+    <div>
+        <label>yoke</label>
+        <input id="includeYoke" disabled readonly type="checkbox" [ngModel]="currentOpt?.yoke" />
+    </div>
+</div>
