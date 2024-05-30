@@ -1,7 +1,7 @@
 <main>
   <button id="step1" routerLink="">Step 1</button>
   <button id="step2" routerLink="step2" [disabled] ="!stepOneDone">Step 2</button>
-  <button id="step3" routerLink="" [disabled] ="!(stepOneDone && stepTwoDone)">Step 3</button>
+  <button id="step3" routerLink="step3" [disabled] ="!stepTwoDone">Step 3</button>
 </main>
 <router-outlet></router-outlet>
 <img *ngIf="stepOneDone" [src]="imageUrl()" width="40%" />

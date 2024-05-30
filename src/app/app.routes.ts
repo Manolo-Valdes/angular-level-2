@@ -16,6 +16,6 @@ export const routes: Routes = [
     },{
         path:'step3',
         component:SummaryComponent,
-        canActivate:[()=> inject(StateService).stepOneDone( ) || inject(Router).createUrlTree(['/'])]
+        canActivate:[()=> inject(StateService).stepTwoDone( ) || inject(Router).createUrlTree(['/'])]
     }
 ];

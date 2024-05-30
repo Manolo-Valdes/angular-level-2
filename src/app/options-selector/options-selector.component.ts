@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
 import { TeslaCarService } from '../core/tesla-car.service';
 import { StateService } from '../core/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
@@ -17,33 +17,40 @@ export class OptionsSelectorComponent implements OnInit, OnDestroy {
 
   get selectedConfig():number
   {
-    return this.state.selectedConfig ? this.state.selectedConfig?.id: 0;
+    return this.state.selectedConfig();
   }
   set selectedConfig(i:number)
   {
-    if (this.state.selectedOption)
-      {
-        let conf = this.state.selectedOption.configs.find(c=> c.id === Number(i));
-        this.state.selectedConfig = conf;
-        this.currentCfg.set(conf);
-      }
+    this.state.selectedConfig.set(Number(i));
   }
   get currentOpt()
   {
     return this.state.selectedOption;
   }
   
-  get towHitch():boolean
+  
+  get includeTow():boolean
   {
-    return this.state.selectedOption ? this.state.selectedOption?.towHitch : false;
+    return this.state.includeTow;
   }
-  set towHitch(value:boolean)
+  set includeTow(value:boolean)
    {
-    if (this.state.selectedOption)
-        this.state.selectedOption.towHitch = value;
+        this.state.includeTow = value;
    }
   
-  currentCfg = signal(this.state.selectedConfig)
+   get includeYoke():boolean
+   {
+     return this.state.includeYoke;
+   }
+   set includeYoke(value:boolean)
+    {
+         this.state.includeYoke = value;
+    }
+
+    currentCfg = computed(()=>{
+      const cfgId = this.state.selectedConfig();
+      return this.state.selectedOption?.configs.find(c=> c.id === cfgId);
+    } )
 
   constructor(private tesla:TeslaCarService,private state: StateService){}
     private sub!: Subscription;
@@ -51,10 +58,6 @@ export class OptionsSelectorComponent implements OnInit, OnDestroy {
     this.sub = this.tesla.getModelOptions(this.state.selectedmodel()).subscribe(
       opt => {
         this.state.selectedOption = opt;
-        if (this.state.selectedConfig===undefined)
-          {
-            this.selectedConfig=1;
-          }
       }
     );
   }

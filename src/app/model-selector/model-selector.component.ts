@@ -52,11 +52,10 @@ export class ModelSelectorComponent implements OnInit {
   ngOnInit(): void {
     this.models = this.teslaService.getModels().pipe(
       tap(value =>{
-        if (this.selectedmodel==='')
+        if (this.selectedmodel!=='')
           {
-            this.selectedmodel=(value[0].code);
+            this.updateColors(this.selectedmodel);
           }
-          this.updateColors(this.selectedmodel);
       } )
     );
   }

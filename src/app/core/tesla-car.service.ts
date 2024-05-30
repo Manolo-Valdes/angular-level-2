@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map, of, tap } from 'rxjs';
-import { iTeslaCar, iTeslaOption, iapiTeslaOption } from './models';
+import { Observable, of, tap } from 'rxjs';
+import { iTeslaCar, iTeslaOption } from './models';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +28,7 @@ export class TeslaCarService {
 
   getModelOptions(model:string):Observable<iTeslaOption>
   {
-    if (model ==='')
-      {
-        return new Subject<iTeslaOption>().asObservable();
-      }
     const url:string=`/options/${model}`;
-    return this.http.get<iapiTeslaOption>(url).pipe(
-      map(value =>  ({code: model , ...value}) ),
-      tap((v) => console.log(v))
-    )
+    return this.http.get<iTeslaOption>(url)
   }
 }

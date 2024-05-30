@@ -2,17 +2,18 @@
 <div *ngIf="currentCfg">
     <label>Config:</label>
     <select id="configSelect" name="configSelect" [(ngModel)]="selectedConfig">
+        <option value="0" hidden>Please select your configuration</option>
         <option  *ngFor="let cfg of currentOpt?.configs" [value]="cfg.id">{{cfg.description}}</option>
     </select>
     <div *ngIf="selectedConfig!==0 ">
         <p>Range: {{currentCfg()?.range}} miles - Max speed: {{currentCfg()?.speed}} - Price: {{currentCfg()?.price}} </p>
     </div>
-    <div>
-        <label>towHitch</label>
-        <input id="includeTow" disabled readonly type="checkbox" [ngModel]="currentOpt?.towHitch" />
+    <div *ngIf="currentOpt?.towHitch">
+        <label>towHitch?</label>
+        <input id="includeTow" type="checkbox" [(ngModel)]="includeTow" />
     </div>
-    <div>
-        <label>yoke</label>
-        <input id="includeYoke" disabled readonly type="checkbox" [ngModel]="currentOpt?.yoke" />
+    <div *ngIf="currentOpt?.yoke">
+        <label>yoke?</label>
+        <input id="includeYoke" type="checkbox" [(ngModel)]="includeYoke" />
     </div>
 </div>

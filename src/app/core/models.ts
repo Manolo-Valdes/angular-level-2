@@ -15,12 +15,7 @@ export interface iTeslaColor
     price: number
 }
 
-export interface iTeslaOption extends iapiTeslaOption
-{
-    code: string,
-}
-
-export interface iapiTeslaOption
+export interface iTeslaOption
 {
     configs: iTeslaConfig[],
     towHitch: boolean,
