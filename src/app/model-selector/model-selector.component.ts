@@ -29,7 +29,7 @@ export class ModelSelectorComponent implements OnInit {
     this.updateColors(value);
    }
 
-   get selectedColor()
+   get selectedColor(): string
    {
     return this.state.selectedColor();
    }
@@ -38,7 +38,7 @@ export class ModelSelectorComponent implements OnInit {
     this.state.selectedColor.set(value);
    }
 
-   get stepOneDone()
+   get stepOneDone():boolean
    {
     return this.state.stepOneDone();
    }

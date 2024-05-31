@@ -1,6 +1,4 @@
 
-export const MODELS:string[] = ['3' , 'C' , 'S' , 'X' , 'Y'];
-
 export interface iTeslaCar
 { 
     code: string,

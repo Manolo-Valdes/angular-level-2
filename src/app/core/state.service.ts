@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed, effect, signal } from '@angular/core';
+import { Injectable, Signal, WritableSignal, computed, effect, signal } from '@angular/core';
 import { iTeslaConfig, iTeslaOption } from './models';
 
 @Injectable({
@@ -7,10 +7,10 @@ import { iTeslaConfig, iTeslaOption } from './models';
 export class StateService {
 
 
-  selectedColor=signal('');
-  selectedmodel=signal('');
+  selectedColor:WritableSignal<string>=signal('');
+  selectedmodel:WritableSignal<string>=signal('');
   selectedOption: iTeslaOption|undefined=undefined;
-  selectedConfig=signal(0);
+  selectedConfig:WritableSignal<number>=signal(0);
   includeTow:boolean=false;
   includeYoke:boolean=false;
 

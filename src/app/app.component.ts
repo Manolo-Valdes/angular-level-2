@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import {AsyncPipe, JsonPipe, NgIf} from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { StateService } from './core/state.service';
@@ -16,11 +16,11 @@ export class AppComponent {
   {
     return this.state.stepTwoDone();
   }
-  get stepOneDone()
+  get stepOneDone():boolean
   {
    return this.state.stepOneDone();
   }
-  get imageUrl()
+  get imageUrl():Signal<string>
   {
    return this.state.imageUrl;
   }

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, computed, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, Signal, computed, signal } from '@angular/core';
 import { TeslaCarService } from '../core/tesla-car.service';
 import { StateService } from '../core/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
@@ -23,7 +23,7 @@ export class OptionsSelectorComponent implements OnInit, OnDestroy {
   {
     this.state.selectedConfig.set(Number(i));
   }
-  get currentOpt()
+  get currentOpt():iTeslaOption|undefined
   {
     return this.state.selectedOption;
   }
@@ -47,7 +47,7 @@ export class OptionsSelectorComponent implements OnInit, OnDestroy {
          this.state.includeYoke = value;
     }
 
-    currentCfg = computed(()=>{
+    currentCfg:Signal<iTeslaConfig|undefined> = computed(()=>{
       const cfgId = this.state.selectedConfig();
       return this.state.selectedOption?.configs.find(c=> c.id === cfgId);
     } )
