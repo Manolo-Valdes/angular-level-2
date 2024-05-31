@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModelSelectorComponent } from './model-selector.component';
+import {  HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('ModelSelectorComponent', () => {
   let component: ModelSelectorComponent;
@@ -8,7 +9,7 @@ describe('ModelSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModelSelectorComponent]
+      imports: [HttpClientTestingModule,ModelSelectorComponent]
     })
     .compileComponents();
     

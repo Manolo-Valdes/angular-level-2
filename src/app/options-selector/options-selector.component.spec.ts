@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OptionsSelectorComponent } from './options-selector.component';
+import {  HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('OptionsSelectorComponent', () => {
   let component: OptionsSelectorComponent;
@@ -8,7 +9,7 @@ describe('OptionsSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OptionsSelectorComponent]
+      imports: [HttpClientTestingModule,OptionsSelectorComponent]
     })
     .compileComponents();
     

@@ -11,7 +11,7 @@ import { StateService } from './core/state.service';
   templateUrl: "./app.component.html",
 })
 export class AppComponent {
-  title = 'Angular';
+  
   get stepTwoDone():boolean
   {
     return this.state.stepTwoDone();
