@@ -22,7 +22,10 @@ export class ModelSelectorComponent implements OnInit {
     return this.state.selectedmodel();
   }
   set selectedmodel(value: string){
+
     this.state.selectedmodel.set(value);
+    this.state.selectedOption = undefined;
+    this.state.selectedConfig.set(0);
     this.updateColors(value);
    }
 
@@ -40,10 +43,6 @@ export class ModelSelectorComponent implements OnInit {
     return this.state.stepOneDone();
    }
 
-   get imageUrl()
-   {
-    return this.state.imageUrl;
-   }
     
   models!:Observable<iTeslaCar[]>;
 
