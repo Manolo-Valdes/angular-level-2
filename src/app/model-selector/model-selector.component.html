@@ -4,10 +4,12 @@
     <select id="modelSelect" name="modelSelect" [(ngModel)]="selectedmodel">
       <option value="" hidden> Please select your model</option>
       <option  *ngFor="let model of models | async" [value]="model.code">{{model.description}}</option>
-      </select>
+    </select>
+    <ng-template [ngIf]="selectedmodel!==''">
       <label>Color:</label>
       <select id="colorSelect" name="colorSelect" [(ngModel)]="selectedColor">
         <option value="" hidden> Please select your color</option>
         <option *ngFor="let color of modelColors" [value]="color.code">{{color.description}}</option>
-        </select>
+      </select>
+    </ng-template>
 </div>
